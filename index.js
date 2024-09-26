@@ -5,7 +5,7 @@ import axios from  "axios";
 const app = express();
 const port =5000;
 //Your API Key from the Openweathermap
-const APIKey="5176930e456291077a02c2c5276f0333"
+const APIKey="Your API Key";
 
 //Using Middleware 
 app.use(express.static("public"));
@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 
 app.get("/", async (req,res)=>{
-    // const city= req.body["cityname"];
+    
     try{
  const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=Delhi&units=metric&appid=${APIKey}`);
  const result = response.data;
@@ -111,10 +111,9 @@ app.post("/",async(req,res)=>{
     }
     catch(error){
         
-            const notfound="Images/no-results.png";
         
         console.error("Failed to make request:",error.message);
-        res.render("index.ejs",{notf:notfound});
+        
     }
 });
 
